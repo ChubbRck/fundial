@@ -1,0 +1,45 @@
+#content_getting_started{
+  img {
+    float: right;
+    width: 270px;
+    margin-left: 25px;
+    margin-bottom: 13px;
+  }
+  
+  a {
+    font-size: inherit;
+    color: $giphygreen;
+    text-decoration:none;
+    font-weight: bold;
+
+    &:hover{
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+}
+
+.doc_block{
+  margin: 30px;
+}
+
+.doc_side{
+  z-index:1000;
+  top:100px;
+  width:100%;
+  height:auto;
+  color:#fff;
+  margin: 5px 25px;
+  padding:2px;
+  background-color:#1f1f1f;
+
+  li{
+    display: inline-block; 
+    &:after{
+      content: "|";
+      color: $buttonblue;
+      margin-left:11px;
+    }
+  }
+}
+

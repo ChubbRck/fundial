@@ -1,0 +1,73 @@
+
+.content_page{
+  position: relative;
+  right: 0;
+  width:50%;
+  flex: 1 1 auto;
+  height: calc(100% - 89px);
+  overflow-y: scroll;
+  top: 61px;
+  background-color: #2e2e2e;
+  margin-right: 123px;
+}
+
+#pane-container{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display:flex;
+}
+
+#code_editor{
+	background-color:black;
+	margin:0px auto;
+	height:1px;
+	font-size:16px;
+	font-family:monospace;
+	font-weight:300;
+    position: relative;
+    top: 0px;
+    height: calc(100% - 89px); 
+    width: 100%;
+    top: 61px;
+}
+
+#code_editor_container{
+  position: relative;
+  width:50%;
+  height: 100%;
+  z-index: 99;
+  flex: 0 0 auto;
+  top: 0;
+  left: 0;
+  min-width: 500px;
+  max-width: 80%;
+}
+
+.splitter{
+  width: 20px; 
+  height: 100%; 
+  display:inline-block; 
+  vertical-align:top;
+  cursor: col-resize;
+  flex: 0 0 auto;
+  background: url(../img/hsizegrip.png) center center no-repeat #535353;
+}
+
+.ace-tomorrow-night-bright .ace_print-margin{
+  display: none;
+}
+
+//TODO: Consider renaming this class to minimize confusion with #pane-container.
+.pane-container{
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+
+  p {
+    color: white;
+  }
+}

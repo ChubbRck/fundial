@@ -1,0 +1,509 @@
+nav.navbar{
+  @media(max-width:991px){
+    display:none;
+  }
+}
+ul#login-container{
+  margin-top: 12px;
+  padding-left: 11px;
+  float:right;
+  // margin-left: 10px;
+
+  .ss-user{
+    display: block;
+    height: 36px;
+    left: 0;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    width: 36px;
+  }
+  .ss-user:before{
+    content: '👤';
+    left: 10px;
+    position: relative;
+  }
+
+  .ss-user:after{
+    content: '';
+    width: 36px;
+    height: 36px;
+    margin-left: -14px;
+    position: absolute;
+    background-color: #fff;
+    opacity: .1;
+  }
+
+  .no-user{
+    min-width: 170px;
+  }
+}
+
+// .static-alert{
+//   @extend .alert
+// }
+
+.navbar {
+    background-color:black;
+    border-bottom: 1px solid white;
+    height: 60px;
+    z-index: 9999;
+    a.button{
+      margin-top: 15px;
+      float: right;
+      margin-left: 15px;
+      padding: 5px 18px;
+
+      @media(max-width: 991px){
+        display: none;
+      }
+
+
+    }
+
+    ul#top-level{
+    	// background: linear-gradient(to right,#0cf,#93f 31%,#e646b6 52%,#fff9aa 77%,#0f9,#0cf);
+    	// background-size: 200% 50%;
+    	// background-position: 0% 50%;
+      margin-right: 10px;
+    	margin-top: 15px;
+
+    	li {
+    		-webkit-transition: background-color .5s;
+    		-moz-transition: background-color .5s;
+    		-ms-transition: background-color .5s;
+    		transition: background-color .5s;
+    		// border-right: 4px solid #121212;
+        padding-left:0px;
+        margin-left:8px;
+        margin-bottom:0px;
+
+    		&:hover{
+    			background-color: transparent;
+          border-bottom: 4px solid $giphygreen;
+			    -webkit-transition: background-color .5s;
+			    -moz-transition: background-color .5s;
+			    -ms-transition: background-color .5s;
+			    transition: background-color .5s;
+
+			    &:before{
+			    	// opacity:.3;
+			    }
+    		}
+
+    		&:before{
+    			// content: '';
+			    // position: absolute;
+			    // background-color: #121212;
+
+			    // opacity: 1;
+			    // left: 0;
+			    // top: 0;
+			    // right: 0;
+			    // bottom: 4px;
+			    // z-index: 1;
+			    // -webkit-transition: opacity .35s;
+			    // -moz-transition: opacity .35s;
+			    // -ms-transition: opacity .35s;
+			    // transition: opacity .35s;
+			}
+		}
+	}
+}
+
+img.dev-logo{
+  width: 160px;
+
+}
+
+nav{
+  
+  // animation: colorchange;
+  z-index: 9999;
+}
+
+.navbar img {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 12px;
+
+}
+
+.navbar ul,
+.navbar li,
+.navbar a,
+.navbar-brand {
+    // height: 36px;
+    height: 100%;
+}
+
+.navbar li a {
+    line-height:36px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    z-index: 2;
+
+}
+
+
+.no-pad {
+    text-align: center;
+    padding-left: 0px;
+    background: none;
+    background-transition: none;
+}
+.no-pad:before {
+  content: none !important;
+}
+
+#header {
+    li, ul {
+	padding-left: 0px;
+    }
+
+}
+
+#header .default-nav {
+  color: #fff;
+  float: right;
+  font-size: 14px;
+  height: 36px;
+  background-color: #3e3e3e;
+  // margin: 10px 0 0;
+}
+#header .default-nav a {
+  background-color: #000;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  float: right;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 30px;
+  margin-left: 5px;
+  padding: 0 30px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+#header .default-nav a:active {
+  background-color: shade(#9840fb, 55%);
+}
+#header .default-nav a.login-join-button {
+  background-color: #3e3e3e;
+  margin-left: 10px;
+  min-width: 170px;
+  padding-left: 80px;
+}
+#header .default-nav a.login-join-button:active {
+  background-color: shade(#5c5c5c, 10%);
+}
+#header .default-nav a.login-join-button .ss-icon {
+  background: #212121;
+  display: block;
+  height: 30px;
+  left: 0;
+  line-height: 42px;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+#header .default-nav a.upload-button {
+  background-color: #9840fb;
+}
+#header .default-nav a.upload-button:active {
+  background-color: shade(#9840fb, 10%);
+}
+#header .default-nav a.create-button {
+  margin-left: 0;
+}
+#header .default-nav a.back-button {
+  background-color: #23cefd;
+}
+#header .default-nav a.back-button:active {
+  background-color: shade(#23cefd, 10%);
+}
+#header .default-nav a.back-button .ss-icon {
+  display: inline-block;
+  margin-top: 1px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+#header .default-nav .text {
+  line-height: 35px;
+}
+#header .default-nav a.toggle {
+  float: left;
+}
+#header .default-nav .button {
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+}
+#header .default-nav .user:hover > ul {
+  display: block;
+}
+#header .default-nav .user {
+  float: right;
+  position: relative;
+  // margin-left: 10px;
+}
+#header .default-nav .user a {
+  float: left;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+#header .default-nav .user .username-button {
+  background: transparent;
+  text-align: left;
+}
+#header .default-nav .user .username-button .avatar {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  float: left;
+  height: 36px;
+  width: 36px;
+  vertical-align: top;
+}
+#header .default-nav .user .username-button .username {
+  text-align: center;
+  background-color: #3e3e3e;
+  float: left;
+  height: 36px;
+  display: block;
+  line-height: 36px;
+  padding: 0 15px;
+  min-width: 110px;
+  text-transform: none;
+  vertical-align: top;
+}
+#header .default-nav .user .username-button:active .avatar {
+  opacity: 0.9;
+}
+#header .default-nav .user .username-button:active .username {
+  background-color: shade(#5c5c5c, 10%);
+}
+#header .default-nav .user .header-caret {
+  cursor: pointer;
+  color: #fff;
+  float: left;
+  font-size: 12px;
+  height: 36px;
+  line-height: 44px;
+  overflow: hidden;
+  padding: 0;
+  text-align: center;
+  width: 40px;
+}
+#header .default-nav .user .partner-nav-menu {
+  top: 36px;
+  position: absolute;
+  right: 0;
+  z-index: 300;
+  display: none;
+  margin: 0;
+  width: 100%;
+  background-color: #3e3e3e;
+}
+#header .default-nav .user .partner-nav-menu li:before {
+  content: none;
+}
+#header .default-nav .user .partner-nav-menu li:first-of-type {
+  border-top: 4px solid #121212;
+}
+#header .default-nav .user .partner-nav-menu li {
+  background: #3e3e3e;
+  border-top: 1px solid #515151;
+  border-right: none;
+  display: block;
+  list-style: none;
+  margin: 0;
+  text-align: right;
+  text-transform: uppercase;
+}
+#header .default-nav .user .partner-nav-menu li a {
+  background: transparent;
+  color: #fff;
+  display: block;
+  float: none;
+  margin: 0;
+  padding: 0 0px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 15px;
+  text-transform: none;
+}
+
+#header .default-nav .user .partner-nav-menu li a:hover {
+  background-color: #5c5c5c;
+  text-decoration: none;
+}
+#header .default-nav .user .partner-nav-menu li a:active {
+  background-color: shade(#5c5c5c, 10%);
+}
+
+
+
+@font-face {
+  font-family: "SSSocial";
+  src: url("../fonts/ss-social-circle.eot");
+  src: url("../fonts/ss-social-circle.eot?#iefix") format('embedded-opentype'), url("../fonts/ss-social-circle.woff") format('woff'), url("../fonts/ss-social-circle.ttf") format('truetype'), url("../fonts/ss-social-circle.svg#SSSocialCircle") format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SSSocial";
+  src: url("../fonts/ss-social-regular.eot");
+  src: url("../fonts/ss-social-regular.eot?#iefix") format('embedded-opentype'), url("../fonts/ss-social-regular.woff") format('woff'), url("../fonts/ss-social-regular.ttf") format('truetype'), url("../fonts/ss-social-regular.svg#SSSocialRegular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* This triggers a redraw in IE to Fix IE8's :before content rendering. */
+html:hover [class^="ss-"] {
+  -ms-zoom: 1;
+}
+.ss-icon,
+.ss-icon.ss-social,
+.ss-icon.ss-social-circle,
+[class^="ss-"]:before,
+[class*=" ss-"]:before,
+[class^="ss-"][class*=" ss-social"]:before,
+[class*=" ss-"][class*=" ss-social"]:before,
+[class^="ss-"].right:after,
+[class*=" ss-"].right:after,
+[class^="ss-"][class*=" ss-social"].right:after,
+[class*=" ss-"][class*=" ss-social"].right:after {
+  font-family: "SSSocial";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+/*-webkit-font-feature-settings: "liga" Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+.ss-icon.ss-social-circle,
+[class^="ss-"].ss-social-circle:before,
+[class*=" ss-"].ss-social-circle:before,
+[class^="ss-"].ss-social-circle.right:after,
+[class*=" ss-"].ss-social-circle.right:after {
+  font-weight: bold;
+}
+[class^="ss-"].right:before,
+[class*=" ss-"].right:before {
+  display: none;
+  content: '';
+}
+
+.ss-dropdown:before,
+.ss-dropdown.right:after {
+  content: '▾';
+}
+
+@font-face {
+  font-family: "SSStandard";
+  src: url("../fonts/ss-standard.eot");
+  src: url("../fonts/ss-standard.eot?#iefix") format('embedded-opentype'), url("../fonts/ss-standard.woff") format('woff'), url("../fonts/ss-standard.ttf") format('truetype'), url("../fonts/ss-standard.svg#SSStandard") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.ss-icon,
+.ss-icon.ss-standard,
+[class^="ss-"]:before,
+[class*=" ss-"]:before,
+[class^="ss-"].ss-standard:before,
+[class*=" ss-"].ss-standard:before,
+[class^="ss-"].right:after,
+[class*=" ss-"].right:after,
+[class^="ss-"].ss-standard.right:after,
+[class*=" ss-"].ss-standard.right:after {
+  font-family: "SSStandard";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+/*-webkit-font-feature-settings: "liga" Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+[class^="ss-"].right:before,
+[class*=" ss-"].right:before {
+  display: none;
+  content: '';
+}
+
+
+
+::-webkit-scrollbar { 
+    display: none !important; 
+}
+#sidebar-nav{
+position: fixed;
+    z-index: 2000;
+    right: 0px;
+    top: 0px;
+    width: 123px;
+    height: 100%;
+    /*
+    background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    background: repeating-linear-gradient(45deg, $giphyblack, $giphyblack 10px, gray 10px, gray 20px);
+*/
+
+  .tab-container{
+    position: fixed;
+    z-index:99999;
+    right: 0px;
+    top: 50%;
+    transform: translate(0,-50%);
+
+    .fa{
+      display: block;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+.header_tab{
+  /*border: 2px dashed white;*/
+  border-bottom-width: 0px;
+  text-shadow: 2px 2px 0px rgba(110, 110, 110, 1);
+  font-family: 'Open Sans', sans-serif;
+  font-weight:800;
+  display:block;
+  width:120px;
+  height:auto;
+  padding:11px 5px 14px 5px;
+  font-size:18px;
+  text-align:center;
+  color:#fff;
+  cursor:pointer;
+  background-color: #000;
+
+  &:last-child{
+    border-bottom-width: 2px;
+  }
+
+  &.active{
+    background-color: $buttonblue;
+  }
+}

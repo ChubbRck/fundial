@@ -1,0 +1,261 @@
+body {
+	padding-top: 70px;
+  	// padding-bottom: 20px;
+  	color: white;
+  	font-family: 'interface', monospace;
+  	font-size: 18px;
+  	line-height: 25px;
+  	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow-x: hidden;
+
+    @media(max-width:992px){
+        padding-top: 0px;
+    }
+    
+    &.mm{
+        a.button.cb{
+            display: none !important;
+        }
+    }
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'interface-xbold';
+	text-transform: none;
+	font-weight: bold;
+	color: white;
+}
+
+h1 {
+	margin: 25px 0px;
+}
+
+h2 {
+	font-size: 28px;
+	margin-top:25px;
+	margin-bottom:25px;
+}
+
+h3 {
+	font-size: 20px;	
+}
+
+h4 {
+	font-size:16px; 
+	font-family:'interface';
+}
+
+ul {
+	list-style-type: none;
+    // list-style-position: inside;
+    padding-left: 20px;
+
+    li {
+    	margin-bottom:10px;
+    	padding-left: 8px;
+    }
+}
+
+pre{
+    display:inline-block;
+    padding: 20px 10px;
+    margin: 5px 0;
+    font-size: 16px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 2px dashed $giphygreen;
+    border-radius: 0px;
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+code{
+	font-weight: normal;
+    color: $giphyred !important;
+    font-size: 90% ;
+    background-color: transparent;
+    margin: 0px !important;
+}
+
+a {
+	color: #4d37ff;
+}
+
+p {
+	font-size: 18px;
+	margin: 25px 0px;
+}
+
+.main-content{
+	&> section:first-of-type{
+		margin-top: 43px;
+
+        &.dashboard{
+            margin-top: 60px;
+        }
+	}
+
+	ul li:before{
+		    content: '■';
+			position: absolute;
+			color: $giphyblack;
+			font-size: 23px;
+			width: 8px;
+			height: 8px;
+			left: 16px;
+    	}
+}
+
+div.button, a.button, input.button, label.button{
+	background-color: $buttonblue;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 35px;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    cursor: pointer;
+    display: inline-block;
+
+    &.dis{
+        background-color: rgb(192, 192, 192);
+        cursor: none;
+
+        &:hover{
+            background-color: rgb(192, 192, 192);
+        }
+    }
+    &.slim{
+    	padding: 5px 35px;
+    }
+
+    &.super-slim{
+        padding: 3px 15px;
+    }
+
+    &.rt{
+    	float: right;
+    }
+
+    &.delete{
+    	background-color: #ff6666;
+    	color: white;
+    	float: left;
+    	margin-top: 10px;
+
+    	&:hover{
+    		background-color: black;
+    		color: white;
+    	}
+    }
+
+    &.cancel{
+    	margin-right: 5px;
+    	margin-top: 10px;
+    	color: #3e3e3e;
+    	background-color: #ececec;
+
+    	&:hover{
+    		background-color: black;
+    		color: white;
+    	}
+    }
+
+    &:hover{
+    	text-decoration: none;
+    	background-color: #524AD9;
+    }
+}
+
+input[type="text"], input[type="email"], input[type="url"], textarea{
+    width: 100%;
+    display: block;
+    background-color: #f7f7f7;
+    border: solid 1px #cccccc;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0px;
+    width: 100%;
+    display: block;
+    background-color: #f7f7f7;
+    border: solid 1px #cccccc;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+a.dummy-anchor {
+    display: block;
+    position: relative;
+    top: -80px;
+    visibility: hidden;
+}
+
+// Styles for messages
+
+.messages{
+    margin-top: -1px;
+    position: relative;
+    
+    [class*="col-"]{
+        z-index: 200;
+        right: 0;
+        width: 428px;
+        border-radius: 0px;
+
+        .alert   {
+            background-color:#f6f6f6;
+            border-color: transparent;
+            border-radius: 0px;
+            color: black;
+            font-size: 16px;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            text-align: center;
+            color: white;
+            background-color: $giphyred;
+            font-weight: bold;
+
+            &.alert-info, &.alert-success{
+                background-color: $giphyblue;
+            }
+
+            .close{
+                color: white;
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.xycenter{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// TODO: Move to animations file
+@keyframes colorchange{
+
+      0%   {background-color: $giphyblue;}
+      25%  {background-color: $buttonblue;}
+      50%  {background-color: $giphypink;}
+      75%  {background-color: $giphyred;}
+      100% {background-color: $giphygreen;}
+
+    }

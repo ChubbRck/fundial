@@ -1,0 +1,57 @@
+footer{
+
+	width: 100%;
+	background-color: black;
+	position: fixed;
+	bottom: 0px;
+	height:50px;
+	border-top: 1px solid white;
+	z-index: 9999;
+
+	ul.file-operation-tray{
+		display: inline-block;
+		margin-top: 9px;
+		margin-left: 0px;
+		padding-left: 0px;
+		
+		li {
+			display: inline;
+			margin-right: 16px;
+		}
+
+	}
+	.save_update{
+		font-size: 12px;
+    	font-weight: 600;
+    	margin: 0 16px;
+    	color: $giphypink;
+	}
+
+	.code_marquee{
+		font-size:14px;
+		color:#fff;
+		padding-top:5px;
+		padding-bottom:5px;
+		text-align:center;
+		width:100%;
+		color:#aaa;
+		display:inline;
+	}
+
+	.keyboard_shortcut_tip_container{
+		font-size:14px;
+		color:#fff;
+		padding-top:15px;
+		padding-bottom:5px;
+		text-align:center;
+		color:#aaa;
+		display:inline;
+		float: right;
+	}
+
+	#marquee_name {
+		color:#fff;
+		font-weight:900;
+	 	margin: 0 5px;
+	}
+}

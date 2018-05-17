@@ -1,0 +1,223 @@
+
+.newGamePrompt{
+    display: block;
+    width: 100%;
+    margin-top:100px;
+
+    @media(max-width: 992px){
+      display: none;
+    }
+}
+section#playlistUI{
+  
+  width:100%;height:60px;
+  background: linear-gradient(0deg, #183abb, #892689, #301347);
+}
+  .lives_block{
+    display:block;float:left;
+    width:17%;height:60px;
+    margin-left:2%;
+    margin-top:10px;
+    text-align:center;
+
+    img.life{
+      height: 40px;
+    }
+  }
+
+
+
+.pageContainer{
+  width: 1096px;
+  display: block;
+  margin: auto;
+  margin-top:40px;
+  text-align:center;
+  @media(max-width:992px){
+      width: 100%;
+      margin-top:0px;
+    }
+
+  span.gameTitle{
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    color: #b2b2b2;
+    font-weight: 600;
+    font-size: 14px;
+    height: 36px;
+    text-align:left;
+    @media(max-width:992px){
+      display: none;
+    }
+}
+
+  section#authorSidebar{
+    width: 248px;
+    display: block;
+    padding: 0px 65px 0px 0px;
+    float:left;
+    line-height: 15px;
+    text-align:left;
+
+    @media(max-width:992px){
+      display: none;
+    }
+
+    img.avatar{
+      width: 50px; 
+      float: left;
+    }
+    span{
+      display: inline-block; 
+
+      &.name{
+        font-size:16px;
+        margin-left:10px;
+        font-weight: 900;
+        margin-top:10px;
+      }
+
+      &.username{
+        font-size: 14px;
+        font-weight: bold;
+        color: #b2b2b2;
+        margin-left:10px;
+      }
+    }
+
+    p.bio {
+      color: #b2b2b2;
+      margin: 30px 0px;
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+
+  section#shareSidebar{
+    width: 248px;
+    display: block;
+    float:right;
+    padding: 0px 20px;
+    text-align:left;
+
+    @media(max-width:992px){
+      display: none;
+    }
+  }
+}
+
+canvas{
+  /*transform:scale(0.3);*/
+  width: 100%;
+  position: relative;
+  margin: auto;
+
+  &.portrait{
+    width: 50%;
+  }
+}
+
+.gameContainer{
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin: auto;
+  display: block;
+  text-align:center;
+
+
+}
+  .overlay{
+       font-family: 'nexablack';
+      
+        background-color: rgba(0,0,0,0.8);  
+      span{
+      text-transform:uppercase;
+      font-weight: bold;
+      font-size: 36px;
+      display: block;
+      line-height: 36px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 100%;
+      position: absolute;
+    }
+  }
+  .beginOverlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    // background-color: red;
+    transition: opacity 0.25s;
+    -webkit-transition: opacity 0.25s;
+    opacity: 1;
+    text-align: center;
+  
+   
+
+    &.begun{
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity 0.25s;
+      -webkit-transition: opacity 0.25s;
+    }
+}
+
+  .gameOverOverlay{
+    text-align:center;
+     position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    // background-color: blue;
+    opacity: 0;
+     transition: opacity 0.25s;
+    -webkit-transition: opacity 0.25s;
+    pointer-events: none;
+     &.ended{
+      opacity: 1;
+      pointer-events:none;
+      transition: opacity 0.25s;
+      -webkit-transition: opacity 0.25s;
+      pointer-events: auto;
+    }
+  }
+.basket.hide {
+  opacity: 0;
+  pointer-events:none;
+  }
+
+.gameView{
+  display:inline-block;
+  margin: auto;
+  width: 600px;
+  position: relative;
+
+  &.portrait{
+    width: 300px;
+  }
+
+  @media(max-width:992px){
+    &.landscape{
+      width:100%;
+      max-height: 100%;
+    } 
+
+    &.portrait{
+      height: 100%;
+    }
+  }
+}
+
+#timerBar{
+  width: 100%;
+  height:20px;
+  background: rgb(13,242,13);
+  &.portrait{
+    width: 50%;
+
+  }
+}

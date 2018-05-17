@@ -1,0 +1,157 @@
+img.giphy-logo{
+  height: 52px;
+  margin-right: 10px;
+}
+
+.search_results_tray{
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.search_results_tray.active{
+    height: 130px;
+    margin-bottom: 32px;
+}
+
+form#giphy_search_form{
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+#upload-button{
+margin-left:20px;
+padding: 14px 35px;
+
+}
+
+input.asset_giphy_search_input[type="text"]{
+  width: calc(100% - 215px);
+  background-color: white;
+  display: inline-block;
+  font-family: interface, "Helvetica Neue", helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  height:52px;
+  letter-spacing:1px;
+  position:relative;
+  vertical-align:top;
+  color: rgb(46, 46, 46);
+  padding-left: 12px;
+}
+
+a.search_button{
+  display: inline-block;
+  height: 52px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+a.search_button img{
+  height:100%;
+}
+
+.search-result{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 10px;
+  position: relative;
+  &:hover{
+    cursor: pointer;
+  }
+  &::before{
+    // content: "Click to add to My Assets!";
+    // display: inline-block;
+    // white-space: pre-wrap;
+    // width: 71px;
+    // font-size: 12px;
+    // position: absolute;
+    // background-color: black;
+    // left: 50%;
+    // margin-left: -35px;
+    // top: 34%;
+    // opacity: 1.0;
+  }
+}
+
+.search-result-image{
+  display:inline-block;
+}
+
+.search-result-image:hover{
+  // opacity: 0.7;
+}
+
+.smart-asset-tray{
+ counter-reset: section -1; 
+  width: 100%;
+  text-align: left;
+  border-top: 2px solid #6157ff;
+
+  &::-webkit-scrollbar {
+    display: block !important;
+  }
+
+  h3{
+    text-align:left;
+    font-size: 24px;
+  }
+}
+
+h3.my-assets-header{
+
+  // font-size: 24px;
+}
+
+.smart-asset{
+  border: 3px dashed white;
+  display:inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  margin-bottom: 29px;
+
+  &.dragover{
+    border: 3px dashed #33c5f3;
+  }
+
+  &::before{
+    content: "Drag GIFs Here!";
+    color: grey;
+    position: relative;
+    top:25px;
+  }
+
+  &::after{
+    counter-increment: section;  
+    position: absolute;
+    color: white;
+    left: 0px;
+    bottom: -26px;               /* Increment the value of section counter by 1 */
+    content: "asset_" counter(section);
+  }
+
+  &.occupied{
+    width: auto;
+    height: auto;
+
+    &::before{
+      content: "";
+    }
+  }
+}
+
+
+.my-assets-container{
+  border-top:1px solid #6157ff;
+  width: 100%;
+}
+
+.assets_filters{text-align:left;width:90%;display: inline-block;}
+.assets_filter{cursor:pointer;font-weight:400;color:#6157ff;display:inline-block;margin-left:8px;font-size:14px;padding:3px 10px;}
+.assets_filter_label{font-weight:900;color:gray;display:inline-block;margin-right:10px;font-size:14px;padding:0px;}
+.assets_filter_sel{background-color:#000;color:#fff;font-weight:600;}
