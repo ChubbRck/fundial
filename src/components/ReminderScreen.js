@@ -11,8 +11,8 @@ class ReminderScreen extends PureComponent {
     
 
     state = {
-        message: '20',
-        reminderTime: null
+        message: '',
+        reminderTime: 20
     
 
     }
@@ -50,16 +50,17 @@ class ReminderScreen extends PureComponent {
 
         return (
             
-            <div id = "overlayContainer" className = {this.props.shown ? 'shown' : 'hidden'}>
+            <div id = "overlayContainer" className = {`no-pulse ${this.props.shown ? 'shown' : 'hidden'}`}>
                 <div className = "clock-image" style={divStyle} />
                 <div id = "darkOverlay" className = {this.props.shown ? 'shown' : 'hidden'}/>
                 <div className = "selectContainer">
                    <input id="time" type="time" name="appt-time" onChange={this.handleTimeChange} defaultValue="16:20"/>
                    <input id="message" type ="text" onChange={this.handleMessageChange} value = {this.state.message} placeholder = "Enter your reminder message here"/>
-                   <div class = "button" onClick = {() => this.props.setReminder(this.state.reminderTime, this.state.message)}>Set Reminder</div>
+                   <div className = "dismissButton" onClick = {() => this.props.setReminder(this.state.reminderTime, this.state.message)}>Set Reminder</div>
+                <div className = "dismissButton" onClick = {this.props.dismissMessage}>Cancel</div>
                 </div>
 
-                <div className = "dismissButton" onClick = {this.props.dismissMessage}/>
+              
             </div>
         )
     }

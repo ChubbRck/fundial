@@ -32,11 +32,11 @@ class ClockHome extends PureComponent {
         reminders: [
 
             {
-                "time":6,
-                "message":"nap time"
+                "time":24,
+                "message":"Take a Poop"
             },
             {
-                "time":36,
+                "time":23,
                 "message":"dinner"
             }
 
@@ -71,6 +71,14 @@ class ClockHome extends PureComponent {
 
     cancelReminder = () => {
         this.setState({setReminderScreenShown: false})
+        var newNum = this.state.num +1;
+        this.setState({num:newNum});
+    }
+
+    showSetReminderScreen = () => {
+
+        this.setState({setReminderScreenShown: true})
+
     }
 
     setReminder = (time, message) => {
@@ -85,6 +93,8 @@ class ClockHome extends PureComponent {
         
         this.setState({reminders:tempReminders})
         this.setState({setReminderScreenShown: false})
+        var newNum = this.state.num +1;
+        this.setState({num:newNum});
     }
 
     tick() {
@@ -135,9 +145,10 @@ class ClockHome extends PureComponent {
             <section id = "clock-container">
                
                 <div>The time is {this.state.time}.</div>
-                <div className = "clock-image" style={divStyle} />
+                <div className = "clock-image" style={divStyle}/>
+                <div onClick = {this.showSetReminderScreen} className = "setReminderButton"/>
                 <ReminderOverlay shown={this.state.reminderScreenShown} gif={this.state.reminderGif} message={this.state.message} dismissMessage = {this.dismissMessage}/>
-                <ReminderScreen shown={this.state.setReminderScreenShown} dismissMessage = {this.cancelReminder} setReminder = {this.setReminder}/>
+                <ReminderScreen key = {this.state.num} shown={this.state.setReminderScreenShown} dismissMessage = {this.cancelReminder} setReminder = {this.setReminder}/>
                 
             </section>
 

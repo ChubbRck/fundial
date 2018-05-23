@@ -1,6 +1,7 @@
 
 import React, { PureComponent } from 'react'
 import axios from 'axios'
+import Sound from 'react-sound'
 
 
 let time = new Date().toLocaleString();
@@ -14,21 +15,31 @@ class ReminderOverlay extends PureComponent {
         time: new Date().getMinutes(),
         reminderScreenShown: false,
         reminders: [],
-        searchResults: null
+        searchResults: null,
+        playSound: false
 
     }
 
     componentWillReceiveProps() {
         
     this.searchStickers()
+    setTimeout(()=>{
+            // Add your logic for the transition
+            this.props.dismissMessage(); // what to push here?
+        }, 15000);
         
-    
+    this.setState({playSound:true})
     }
 
     componentWillUnmount() {
        
     }
-  
+    
+    isIOS = () =>{
+        var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        //alert(iOS)
+        return iOS
+    }
     searchStickers = (e) =>{
       
   
@@ -55,11 +66,21 @@ class ReminderOverlay extends PureComponent {
         }
 
         return (
+           
             <div id = "overlayContainer" className = {this.props.shown ? 'shown' : 'hidden'}>
+                 <Sound
+                    url="/img/sound.wav"
+                  playStatus={(this.props.shown && !this.isIOS()) ? Sound.status.PLAYING : Sound.status.STOPPED}
+            />
                 <div className = "clock-image" style={divStyle} />
                 <div id = "darkOverlay" className = {this.props.shown ? 'shown' : 'hidden'}/>
-                <span className = "reminderMessage">{this.props.message}</span>
-                <div className = "dismissButton" onClick = {this.props.dismissMessage}/>
+                <div className = "messages">
+                    <span className = "dontForget">Don't Forget:</span>
+                    <span className = "reminderMessage">{this.props.message}</span>
+                    <div className = "dismissButton" onClick = {this.props.dismissMessage}>Dismiss</div>
+
+                </div>
+               
             </div>
 
         )

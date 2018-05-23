@@ -24,25 +24,45 @@ img.clock-image{
 }
 
 #overlayContainer{
-	width: 100%;
-	height: 100%;
+	width: 90%;
+	height: 90%;
 	position: fixed;
 	background: black;
 	top:0;
 	left:0;
 	opacity: 1.0;
 	z-index:900;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid white;
+    box-shadow: 0 0 0 rgba(204,169,44, 0.7);
+  	animation: pulse 1s infinite;
+
+  	&.no-pulse{
+  		animation: none;
+  	}
 }
 
 
-.reminderMessage{
+.messages{
 	position: fixed;
 	left:50%;
 	top:50%;
-	font-size:72px;
 	transform:translate(-50%, -50%);
 	z-index: 1000;
 	font-family: 'nexablack';
+	text-align: center;
+
+	span{
+		display: block;
+	}
+
+}
+.reminderMessage{
+	line-height: 80px;
+	font-size:72px;
+
 }
 
 #darkOverlay{
@@ -57,15 +77,51 @@ img.clock-image{
 }
 
 .dismissButton{
-	width: 50px;
-	height: 50px;
-	position: fixed;
-	right: 20px;
-	top: 20px;
-	background-color: yellow;
+	text-transform: uppercase;
+	color: white;
+	background-color: transparent;
+	border: 3px solid white;
+	padding: 8px 24px;
+    margin-top: 70px;
 	z-index: 905;
+	display: inline-block;
+	margin: auto;
+	margin-top: 70px;
+	font-family: 'nexablack';
+	margin-left: 20px;
+	margin-right: 20px;
+	&:hover{
+		cursor: pointer;
+		opacity: 0.7;
+	}
+
+	@media(max-width:980px){
+		margin-top: 35px;
+	}
 }
 
+.setReminderButton{
+	position: fixed;
+	right: 50px;
+	top: 50px; 
+	background-color: transparent;
+	width: 50px;
+	height: 50px;
+	background-image: url('/img/AddAlertButton.png');
+	background-size: cover;
+	&:hover{
+		opacity: 0.7;
+		cursor: pointer;
+	}
+
+	@media(max-width:980px){
+		top: 20px;
+		right: 20px;
+		width: 30px;
+		height: 30px;
+	}
+
+}
 .selectContainer{
 	text-align: center;
 	z-index:9999;
@@ -74,6 +130,13 @@ img.clock-image{
 	left:50%;
 	transform:translate(-50%, -50%);
 	width: 80%;
+
+	#message{
+		@media(max-width:980px){
+			font-size: 18px;
+			line-height: 20px;
+		}
+	}
 
 }
 
@@ -86,6 +149,21 @@ img.clock-image{
  	font-size: 72px;
  	line-height:80px;
  	border: 0px solid black;
+ 	text-align: center;
+
+
+
+ 	@media(max-width:980px){
+ 		font-size:36px;
+ 		display: inline-block;
+ 		margin: auto;
+ 		line-height: 40px;
+ 		width: 80%;
+ 		&#message{
+ 			font-size:18px;
+ 			line-height: 20px;
+ 		}
+ 	}
  }
 
  input[type="text"]{
@@ -93,3 +171,38 @@ img.clock-image{
  	margin-top: 20px;
  	text-align: center;
  }
+
+ span.dontForget{
+ 	text-transform: uppercase;
+ 	color: white;
+ 	font-family: 'nexablack';
+ 	font-size: 30px;
+ 	line-height: 35px;
+ 	color: #9933ff;
+ }
+
+ @-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.7);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 20px rgba(255,255,255, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.7);
+    box-shadow: 0 0 0 0 rgba(255,255,255, 0.7);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 20px rgba(255,255,255, 0);
+      box-shadow: 0 0 0 20px rgba(255,255,255, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+      box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+  }
+}
