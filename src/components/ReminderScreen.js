@@ -12,9 +12,8 @@ class ReminderScreen extends PureComponent {
 
     state = {
         message: '',
-        reminderTime: 20
-    
-
+        reminderMinute: 20,
+        reminderHour: 20
     }
 
     componentDidMount() {
@@ -27,7 +26,9 @@ class ReminderScreen extends PureComponent {
     
     handleTimeChange = (event) => {
         var minutes = event.target.value.split(":")[1];
-        this.setState({reminderTime:minutes});
+        var hours = event.target.value.split(":")[0];       
+        this.setState({reminderHour:hours});
+        this.setState({reminderMinute:minutes});
     }
     
     handleMessageChange = (event) => {
@@ -56,7 +57,7 @@ class ReminderScreen extends PureComponent {
                 <div className = "selectContainer">
                    <input id="time" type="time" name="appt-time" onChange={this.handleTimeChange} defaultValue="16:20"/>
                    <input id="message" type ="text" onChange={this.handleMessageChange} value = {this.state.message} placeholder = "Enter your reminder message here"/>
-                   <div className = "dismissButton" onClick = {() => this.props.setReminder(this.state.reminderTime, this.state.message)}>Set Reminder</div>
+                   <div className = "dismissButton" onClick = {() => this.props.setReminder(this.state.reminderHour, this.state.reminderMinute, this.state.message)}>Set Reminder</div>
                 <div className = "dismissButton" onClick = {this.props.dismissMessage}>Cancel</div>
                 </div>
 

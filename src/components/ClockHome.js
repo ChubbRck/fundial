@@ -24,34 +24,24 @@ class ClockHome extends PureComponent {
     
 
     state = {
-        time: new Date().getMinutes(),
+        hour: new Date().getHours(),
+        minute: new Date().getMinutes(),
         reminderScreenShown: false,
         setReminderScreenShown: false,
         message:"nap time",
         reminderGif: null,
         reminders: [
-
             {
-                "time":24,
+                "hour":14,
+                "minute":52,
                 "message":"Take a Poop"
-            },
-            {
-                "time":23,
-                "message":"dinner"
             }
-
         ],
-
     }
 
     searchStickers = (message) =>{
-      
-  
-
         axios.get('http://api.giphy.com/v1/gifs/translate?s="' + message + '"&api_key=gVwh9XoTdsnErz73NttCxaUiUnWcR6G0&limit=1')
         .then(response => this.setState({reminderGif: response.data.data.images.original.url})    )
-        
-  
     }
 
     componentDidMount() {
@@ -81,9 +71,10 @@ class ClockHome extends PureComponent {
 
     }
 
-    setReminder = (time, message) => {
+    setReminder = (hour, minute, message) => {
         var newReminder = {
-            time:time,
+            hour:hour,
+            minute:minute,
             message:message
         }
 
@@ -97,9 +88,32 @@ class ClockHome extends PureComponent {
         this.setState({num:newNum});
     }
 
+    doesFileExist = (path) => {
+        try {
+            return require(`${path}`);
+        } catch (err) {
+            return false;
+        }
+    }
+
+    formatHour = () => {
+        var formattedHour = ((parseInt(this.state.hour) + 11) % 12 + 1);
+      
+        return formattedHour;
+    }
+
+    getSuffix = () => {
+        if (this.state.hour > 12) {
+            return "PM"
+        } else{
+            return "AM"
+        }
+    }
+
     tick() {
         this.setState({
-            time: new Date().getMinutes()
+            minute: new Date().getMinutes(),
+            hour: new Date().getHours()
         });
 
         // Check for reminders
@@ -111,7 +125,7 @@ class ClockHome extends PureComponent {
 
             // if current reminder time matches current time, fire that reminder and remove it from the array
             // console.log("curent reminder time is " + currentReminder.time + " while current real time is " + this.state.time)
-            if (currentReminder.time == this.state.time){
+            if (currentReminder.minute == this.state.minute && currentReminder.hour == this.state.hour){
                 console.log("MATCH!")
                 // alert(currentReminder.message)
                 this.searchStickers(currentReminder.message)
@@ -128,7 +142,11 @@ class ClockHome extends PureComponent {
 
     render() {
         const { game } = this.state
-        var fileString = "/img/" + this.state.time + ".gif";
+        var timeNow = this.state.hour + ":" + this.state.minute;
+        var formattedHour = ((parseInt(this.state.hours) + 11) % 12 + 1);
+        var suffix;
+
+        var fileString = "/img/" + this.state.hour + "/" + this.state.minute + ".gif";
         var divStyle = {
             width: '100%',
             height: '100%',
@@ -141,18 +159,14 @@ class ClockHome extends PureComponent {
         }
 
         return (
-                
             <section id = "clock-container">
-               
                 <div>The time is {this.state.time}.</div>
                 <div className = "clock-image" style={divStyle}/>
+                {this.doesFileExist(fileString) ? '' : <div className ='noGifWarning'><span className = 'plainTime'>{this.formatHour(this.state.hour)}:0{this.state.minute} {this.getSuffix()}</span><div>There's no GIF for this time yet!<br/>Want to make one?<br/>Go <a href = "https://bit.ly/2s7I1wl">here to contribute!</a></div></div>}
                 <div onClick = {this.showSetReminderScreen} className = "setReminderButton"/>
                 <ReminderOverlay shown={this.state.reminderScreenShown} gif={this.state.reminderGif} message={this.state.message} dismissMessage = {this.dismissMessage}/>
                 <ReminderScreen key = {this.state.num} shown={this.state.setReminderScreenShown} dismissMessage = {this.cancelReminder} setReminder = {this.setReminder}/>
-                
             </section>
-
-
         )
     }
 }

@@ -9,10 +9,10 @@ let time = new Date().toLocaleString();
 
 
 class ReminderOverlay extends PureComponent {
-    
 
     state = {
-        time: new Date().getMinutes(),
+        hour: new Date().getHours(),
+        minute: new Date().getMinutes(),
         reminderScreenShown: false,
         reminders: [],
         searchResults: null,
@@ -42,17 +42,14 @@ class ReminderOverlay extends PureComponent {
     }
     searchStickers = (e) =>{
       
-  
-
         axios.get('http://api.giphy.com/v1/gifs/translate?s="' + this.props.message + '"&api_key=gVwh9XoTdsnErz73NttCxaUiUnWcR6G0&limit=1')
         .then(response => this.setState({searchResults: response.data.data})    )
         console.log(this.state.searchResults)
-  
     }
 
     render() {
         const { game } = this.state
-        var fileString = "/img/22.gif";
+        var fileString = "/img/4/22.gif"; //TODO: Change this
         var divStyle = {
             width: '100%',
             height: '100%',

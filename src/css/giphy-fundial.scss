@@ -206,3 +206,27 @@ img.clock-image{
       box-shadow: 0 0 0 0 rgba(255,255,255, 0);
   }
 }
+
+.noGifWarning{
+	position: fixed;
+	color: white;
+	font-family: 'nexablack';
+	font-size: 48px;
+	line-height: 50px;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	.plainTime{
+		margin-bottom:20px;
+		font-size: 60px;
+		display: block;
+	}
+	a{
+		font-size: inherit;
+		line-height: inherit;
+		color: $giphyred;
+	}
+
+}
