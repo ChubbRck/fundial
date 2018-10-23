@@ -37,7 +37,7 @@ class ReminderScreen extends PureComponent {
 
     render() {
         const { game } = this.state
-        var fileString = "/img/22.gif";
+        var fileString = "/img/16/22.gif";
         var divStyle = {
             width: '100%',
             height: '100%',

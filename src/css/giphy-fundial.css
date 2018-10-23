@@ -1741,4 +1741,21 @@ span.dontForget {
     line-height: inherit;
     color: #fc4d54; }
 
+.individual-time {
+  display: inline-block;
+  padding: 2px 5px;
+  color: black; }
+  .individual-time.true {
+    background-color: green; }
+  .individual-time.false {
+    background-color: red; }
+
+section.upload {
+  padding: 20px;
+  display: inline-block;
+  vertical-align: top;
+  width: 49%; }
+  section.upload .mini-section {
+    margin: 75px 0px; }
+
 /*# sourceMappingURL=giphy-fundial.css.map */

@@ -2,9 +2,10 @@ import Rebase from "re-base";
 import firebase from "firebase";
 
 const firebaseApp = firebase.initializeApp({
-	apiKey: "AIzaSyBftqVinU3Rcx3mthFYzYJF_gLARingsxM",
-    authDomain: "giphy-games.firebaseapp.com",
-    databaseURL: "https://giphy-games.firebaseio.com",
+	apiKey: "AIzaSyCerFx64-9kQfnqgm21_a4czJ5el9ttqXQ",
+    authDomain: "giphy-fundial.firebaseapp.com",
+    databaseURL: "https://giphy-fundial.firebaseio.com",
+    storageBucket: "giphy-fundial.appspot.com"
 });
 
 const base = Rebase.createClass(firebaseApp.database());
