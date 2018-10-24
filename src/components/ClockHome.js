@@ -30,6 +30,8 @@ class ClockHome extends PureComponent {
         setReminderScreenShown: false,
         message:"nap time",
         URL: null,
+        nextURL: null,
+        nextOrNot: 0,
         reminderGif: null,
         reminders: [
             {
@@ -52,6 +54,7 @@ class ClockHome extends PureComponent {
         );
 
         this.setState({hour: this.formatHours(new Date().getHours())})
+        
         this.setState({minute: this.formatMins(new Date().getMinutes())})
         var new_filename = this.formatHours(new Date().getHours()).toString() +this.formatMins(new Date().getMinutes()).toString();
           firebase
@@ -65,7 +68,39 @@ class ClockHome extends PureComponent {
                 //handle error
                 this.setState({ URL: null})
             });
+
+        this.preloadNextMinute();
     
+    }
+
+    preloadNextMinute = () => {
+        let hour = new Date().getHours();
+        let mins = new Date().getMinutes();
+
+        mins = mins + 1;
+        if (mins == 60){
+            mins = "00"
+            hour = hour + 1;
+            if (hour == 13){
+                hour = "01"
+            }
+        }
+
+        let new_filename = this.formatHours(hour).toString() +this.formatMins(mins).toString();
+        firebase
+            .storage()
+            .ref("gifs")
+            .child(new_filename+".gif")
+            .getDownloadURL()
+            .then((url) => {
+                const img = new Image();
+                img.src = url;
+                this.setState({nextURL: url})
+            }).catch((error) => {
+                //handle error
+                
+            });
+        
     }
 
     formatMins = (mins) => {
@@ -140,6 +175,8 @@ class ClockHome extends PureComponent {
     tick() {
         if (this.formatMins(new Date().getMinutes()) !== this.state.minute){
             //update!
+            let newNextOrNot = (this.state.nextOrNot + 1) % 2;
+            this.setState({nextOrNot: newNextOrNot});
             this.setState({hour: this.formatHours(new Date().getHours())})
             this.setState({minute: this.formatMins(new Date().getMinutes())})
 
@@ -158,7 +195,7 @@ class ClockHome extends PureComponent {
     
 
                  // Check for reminders
-        
+                this.preloadNextMinute();
             var arrayLength = this.state.reminders.length;
             for (var i = 0; i < arrayLength; i++) {
                 var currentReminder = this.state.reminders[i];
@@ -193,6 +230,16 @@ class ClockHome extends PureComponent {
         var timeNow = this.state.hour + ":" + this.state.minute;
         var formattedHour = ((parseInt(this.state.hours) + 11) % 12 + 1);
         var suffix;
+        var origShown = "shown";
+        var nextShown = "";
+        console.log(this.state.nextOrNot)
+        // if (this.state.nextOrNot == 0){
+        //     origShown = "shown"
+        //     nextShown = "not-shown"
+        // } else {
+        //     origShown = "not-shown"
+        //     nextShown = "shown"z
+        // }
 
         var fileString = "/img/" + this.state.hour + "/" + this.state.minute + ".gif";
         var divStyle = {
@@ -203,13 +250,34 @@ class ClockHome extends PureComponent {
             position: "absolute",
             backgroundSize: "100% 100%",
             top: 0,
-            left: 0
+            left: 0,
+            opacity:0
         }
+
+         var divStyle_two = {
+            width: '100%',
+            height: '100%',
+            backgroundImage: 'url(' + this.state.nextURL + ')',
+            backgroundColor: "black",
+            position: "absolute",
+            backgroundSize: "100% 100%",
+            top: 0,
+            left: 0,
+            opacity:0
+        }
+
 
         return (
             <section id = "clock-container">
                 <div>The time is {this.state.time}.</div>
-                <div className = "clock-image" style={divStyle}/>
+              
+                    <div className = {origShown + " clock-image"} style={divStyle}/>    
+              
+
+
+              
+                
+                <div className = {nextShown + " clock-image"} style={divStyle_two}/>
                 {this.state.URL ? '' : <div className ='noGifWarning'><span className = 'plainTime'>{this.formatHour(this.state.hour)}:{this.state.minute} {this.getSuffix()}</span><div>There's no GIF for this time yet!<br/>Want to make one?<br/>Go <a href = "/upload">here to contribute!</a></div></div>}
                 <div onClick = {this.showSetReminderScreen} className = "setReminderButton"/>
                 <ReminderOverlay shown={this.state.reminderScreenShown} gif={this.state.reminderGif} message={this.state.message} dismissMessage = {this.dismissMessage}/>

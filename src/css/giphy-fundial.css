@@ -1744,11 +1744,15 @@ span.dontForget {
 .individual-time {
   display: inline-block;
   padding: 2px 5px;
-  color: black; }
+  color: black;
+  border: 2px solid transparent;
+  cursor: pointer; }
   .individual-time.true {
     background-color: green; }
   .individual-time.false {
     background-color: red; }
+  .individual-time.now {
+    border: 2px solid white; }
 
 section.upload {
   padding: 20px;
@@ -1757,5 +1761,8 @@ section.upload {
   width: 49%; }
   section.upload .mini-section {
     margin: 75px 0px; }
+
+.shown {
+  opacity: 1.0 !important; }
 
 /*# sourceMappingURL=giphy-fundial.css.map */

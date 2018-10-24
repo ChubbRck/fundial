@@ -235,12 +235,18 @@ img.clock-image{
 	display:inline-block;
 	padding: 2px 5px;
 	color: black;
+	border: 2px solid transparent;
+	cursor: pointer;
 	&.true{
 		background-color:green;
 	}
 
 	&.false{
 		background-color:red;
+	}
+
+	&.now{
+		border: 2px solid white;
 	}
 }
 
@@ -253,4 +259,8 @@ section.upload{
     .mini-section{
     	margin: 75px 0px;
     }
+}
+
+.shown{
+	opacity: 1.0 !important;
 }

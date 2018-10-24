@@ -182,6 +182,11 @@ class UploadPage extends PureComponent {
 
     listTimes = (hour) => {
         var list = []
+
+        let formatted_mins = this.formatMins(this.state.minute)
+        let formatted_hours = this.formatHours(this.state.hour)   
+        let currentTime = formatted_hours+":"+formatted_mins;
+
         for (let i = 0; i <60; i++) {
             // check if this exists in the taken array
             let timeString = hour.toString() + this.formatMins(i).toString()
@@ -189,8 +194,12 @@ class UploadPage extends PureComponent {
             console.log("looking for " + timeString)
             let result = Object.keys(this.state.times).includes(timeString);
             console.log(result)
+            let isNow = '';
+            if (hour.toString() + ":" + this.formatMins(i).toString() == currentTime){
+                isNow = "now"
+            }
 
-            list.push(<div onClick = {() => this.changeTime(timeString)} className = {"individual-time " + result.toString()}>{hour.toString() + ":" + this.formatMins(i).toString()}</div>)
+            list.push(<div onClick = {() => this.changeTime(timeString)} className = {isNow + " individual-time " + result.toString()}>{hour.toString() + ":" + this.formatMins(i).toString()}</div>)
             //list.push(<div className = "individual-time">{Object.keys(this.state.times)[i]} is taken, i'm afraid.</div>)
         }
 
